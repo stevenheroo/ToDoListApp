@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_parentView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:backgroundTint="@color/teal_200"
+    app:cardCornerRadius="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp">
+
+        <TextView
+            android:id="@+id/firstname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="firstname"
+            android:textSize="@dimen/headerTextSize" />
+
+        <TextView
+            android:id="@+id/lastname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/firstname"
+            android:text="lastname"
+            android:textSize="@dimen/headerTextSize" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lastname"
+            android:inputType="phone"
+            android:text="phone"
+            android:textSize="@dimen/textFormat" />
+
+        <ImageView
+            android:id="@+id/edit_img_BTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_edit" />
+
+        <ImageView
+            android:id="@+id/delete_img_BTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edit_img_BTN"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_delete" />
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
