@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,6 +21,16 @@
             android:textColor="@color/teal_200"
             android:textSize="@dimen/headerTextSize"
             android:textStyle="bold" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="20dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_speed="1"
+            app:lottie_rawRes="@raw/schedule_anim"/>
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
@@ -33,25 +44,25 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Type firstname to record ?"
+            android:text="Type firstname"
             android:textColor="@color/purple_700" />
 
 
         <EditText
-            android:id="@+id/task_name_id"
+            android:id="@+id/task_firstname_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="22dp"
             android:layout_marginBottom="30dp"
             android:focusable="auto"
-            android:hint="Enter your firstname"
+            android:hint="Enter firstname"
             android:inputType="text"
             android:textSize="16sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add LastName to record ?"
+            android:text="Type lastname"
             android:textColor="@color/purple_700" />
 
         <EditText
@@ -61,14 +72,14 @@
             android:layout_marginEnd="22dp"
             android:layout_marginBottom="30dp"
             android:focusable="auto"
-            android:hint="enter lastname"
+            android:hint="Enter lastname"
             android:inputType="text"
             android:textSize="16sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Type phone number ?"
+            android:text="Type phone number"
             android:textColor="@color/purple_700"
             android:textSize="16sp" />
 
@@ -87,6 +98,7 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_floatBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -99,7 +111,7 @@
     <ImageView
         android:id="@+id/back_img_BTN"
         android:layout_width="50dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
