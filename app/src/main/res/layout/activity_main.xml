@@ -20,6 +20,13 @@
             android:textColor="@color/teal_200"
             android:textSize="@dimen/headerTextSize"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/dropdown_BTN"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_drop_down"/>
+
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -27,7 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
-        android:padding="10dp" />
+        android:padding="10dp"
+        tools:listitem="@layout/rows_layout"/>
 
     <TextView
         android:id="@+id/add_text_label"

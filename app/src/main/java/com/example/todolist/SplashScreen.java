@@ -28,12 +28,11 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 if (user != null){
                     startActivity(new Intent(SplashScreen.this, MainActivity.class));
-                    finish();
                 }
                 else {
                     startActivity(new Intent(SplashScreen.this, LoginActivity.class));
-                    finish();
                 }
+                finish();
             }
         }, counter);
     }

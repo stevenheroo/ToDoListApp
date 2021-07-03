@@ -42,6 +42,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
         addTask_FloatBTN.setOnClickListener(this);
 
         backImgBTN = findViewById(R.id.closeBTN);
+        backImgBTN.setOnClickListener(this);
 
     }
 
