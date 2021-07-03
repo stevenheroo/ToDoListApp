@@ -22,6 +22,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
     EditText firstname;
     EditText lastname;
     EditText phone;
+    ImageView backImgBTN;
 
     DatabaseHelper sqDatabase;
 
@@ -40,6 +41,8 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
         addTask_FloatBTN = findViewById(R.id.addTask_FloatBTN);
         addTask_FloatBTN.setOnClickListener(this);
 
+        backImgBTN = findViewById(R.id.closeBTN);
+
     }
 
     @Override
@@ -48,6 +51,9 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
 
         if (itemID == R.id.addTask_FloatBTN) {
             addTask();
+        }
+        if (itemID == R.id.closeBTN) {
+            onBackPressed();
         }
     }
 

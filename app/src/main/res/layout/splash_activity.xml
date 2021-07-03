@@ -18,10 +18,11 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
-        android:layout_width="250dp"
-        android:layout_height="400dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerInParent="true"
         app:lottie_autoPlay="true"
+        android:layout_marginTop="200dp"
         app:lottie_loop="false"
         app:lottie_rawRes="@raw/schedule_anim"
         app:lottie_speed="1" />
