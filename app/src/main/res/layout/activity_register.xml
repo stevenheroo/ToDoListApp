@@ -16,12 +16,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="100dp"
-            android:text="ToDo List"
-            android:fontFamily="@font/winter_glisten"
-            android:textColor="@color/teal_200"
             android:layout_marginBottom="20dp"
+            android:fontFamily="@font/winter_glisten"
+            android:gravity="center"
+            android:text="ToDo List"
+            android:textColor="@color/teal_200"
             android:textSize="40sp"
             android:textStyle="bold" />
 
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/white"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <TextView
             android:layout_width="wrap_content"

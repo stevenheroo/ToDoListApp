@@ -12,6 +12,7 @@ public class Users {
     public Users() {
 
     }
+
     //2nd constructor,
     public Users(String userName, String emailAddress) {
         this.userName = userName;

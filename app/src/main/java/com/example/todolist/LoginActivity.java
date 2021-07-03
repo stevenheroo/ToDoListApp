@@ -1,14 +1,7 @@
 package com.example.todolist;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
-import android.app.Notification;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -18,16 +11,20 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 import com.example.todolist.Utilities.PasswordUtils;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    ProgressBar progressBar;
     private EditText userEmail, userPassword;
     private TextView userRegister, forgetPassword;
     private Button loginBTN;
     private FirebaseAuth auth;
-    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +35,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         userPassword = findViewById(R.id.userPassword);
         userRegister = findViewById(R.id.register_textBTN);
         userRegister.setOnClickListener(this);
-        forgetPassword =findViewById(R.id.forget_passwordBTN);
+        forgetPassword = findViewById(R.id.forget_passwordBTN);
 
         progressBar = findViewById(R.id.progressBar);
         loginBTN = findViewById(R.id.loginBTN);
@@ -52,8 +49,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if (itemID == R.id.loginBTN) {
             loginUser();
-        }
-        else if (itemID == R.id.register_textBTN) {
+        } else if (itemID == R.id.register_textBTN) {
             startActivity(new Intent(this, RegisterActivity.class));
             Toast.makeText(LoginActivity.this, "Welcome to homepage", Toast.LENGTH_LONG).show();
         }

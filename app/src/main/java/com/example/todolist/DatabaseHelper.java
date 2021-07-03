@@ -11,18 +11,16 @@ import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private final Context context;
     private static final String DATABASE_NAME = "ToDOList.db";
-    private static final int DATABASE_VERSION = 1 ;
-
+    private static final int DATABASE_VERSION = 1;
     //table name
     private static final String TABLE_NAME = "task_list";
-
     //columns for database
     private static final String ID = "id";
     private static final String FIRSTNAME = "firstname";
     private static final String LASTNAME = "lastname";
     private static final String PHONE = "phone";
+    private final Context context;
 
 
     public DatabaseHelper(@Nullable Context context) {
@@ -65,23 +63,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // validation checker
         if (result == -1) {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        } else {
             Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
         }
     }
 
-    Cursor getAllData(){
+    Cursor getAllData() {
         String query = "SELECT * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
 
 //        check if database is not null
         Cursor cursor = null;
-        if (db != null){
+        if (db != null) {
             cursor = db.rawQuery(query, null);
         }
         //cursor will contain all data from table
-        return  cursor;
+        return cursor;
     }
 
 

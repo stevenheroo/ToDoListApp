@@ -58,8 +58,8 @@
             android:id="@+id/id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/delete_img_BTN"
+            android:layout_centerHorizontal="true"
             android:text="1" />
 
     </RelativeLayout>

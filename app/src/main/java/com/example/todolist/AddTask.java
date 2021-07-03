@@ -1,21 +1,14 @@
 package com.example.todolist;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 public class AddTask extends AppCompatActivity implements View.OnClickListener {
 
@@ -64,7 +57,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
                 lastname.getText().toString().trim(),
                 phone.getText().toString().trim());
 
-        if ((!firstname.getText().equals("")) || (!lastname.getText().equals("")) || (!phone.getText().equals("")) ){
+        if ((!firstname.getText().equals("")) || (!lastname.getText().equals("")) || (!phone.getText().equals(""))) {
             firstname.setText("");
             lastname.setText("");
             phone.setText("");
