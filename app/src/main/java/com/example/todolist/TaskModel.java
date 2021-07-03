@@ -36,6 +36,7 @@ public class TaskModel {
         this.phone = phone;
     }
 
+
     @Override
     public String toString() {
         return "TaskModel{" +
@@ -44,4 +45,5 @@ public class TaskModel {
                 ", phone='" + phone + '\'' +
                 '}';
     }
+
 }

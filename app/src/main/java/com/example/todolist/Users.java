@@ -1,30 +1,20 @@
 package com.example.todolist;
 
 public class Users {
-    String fullName, email;
 
+    /**
+     * Here we create a user object ...to be saved in firebase
+     * we create two constructors .....1st constructor returns & accepts nothing, the 2nd constructor accepts arguments
+     **/
+    public String userName, emailAddress;
+
+    //1st constructor,
     public Users() {
 
     }
-
-    public Users(String fullName, String email) {
-        this.fullName = fullName;
-        this.email = email;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    //2nd constructor,
+    public Users(String userName, String emailAddress) {
+        this.userName = userName;
+        this.emailAddress = emailAddress;
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/miniTitle"
         android:orientation="vertical"
         tools:context=".LoginActivity">
@@ -25,59 +26,24 @@
             android:textSize="40sp"
             android:textStyle="bold" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/white"
-            android:visibility="gone"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
-            android:layout_marginBottom="15dp"
-            android:text="Register"
+            android:layout_marginBottom="5dp"
+            android:text="Login"
 
             android:textColor="@color/teal_200"
             android:textSize="@dimen/headerTextSize"
             android:textStyle="bold" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/userName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="5dp"
-            app:hintEnabled="false">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/userFullName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:drawableStart="@drawable/ic_person"
-                android:drawablePadding="5dp"
-                android:hint="Username"
-                android:inputType="textPersonName"
-                android:padding="10dp"
-                app:passwordToggleEnabled="true">
-
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
-
 
         <!-- TextInput Layout for Email-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/emailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="5dp"
+            android:layout_margin="16dp"
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -101,14 +67,12 @@
             android:id="@+id/textLayoutPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="5dp"
+            android:layout_margin="16dp"
             app:hintEnabled="false"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_1"
+                android:id="@+id/userPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
@@ -123,55 +87,39 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- TextInput Layout for Password-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textLayoutPassword2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="15dp"
-            app:hintEnabled="false"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:drawableStart="@drawable/ic_security"
-                android:drawablePadding="5dp"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:padding="10dp"
-                app:passwordToggleEnabled="true">
-
-            </com.google.android.material.textfield.TextInputEditText>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
 
         <Button
-            android:id="@+id/registerBTN"
+            android:id="@+id/loginBTN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="30dp"
             android:padding="10dp"
-            android:text="SignUp"
+            android:text="LOGIN"
             android:textColor="@color/teal_200"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/login_textBTN"
+            android:id="@+id/register_textBTN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="30dp"
-            android:text="LogIn Here"
+            android:text="Register Here"
+            android:textColor="@color/miniTitle2"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/forget_passwordBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:text="Forget Password ?"
             android:textColor="@color/miniTitle2"
             android:textStyle="bold" />
 
     </LinearLayout>
+
 </ScrollView>

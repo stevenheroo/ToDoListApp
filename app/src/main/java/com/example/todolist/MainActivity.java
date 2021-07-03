@@ -1,27 +1,33 @@
-package com.example.todolist;
+ package com.example.todolist;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ArrayList<TaskModel> taskModelArrayList;
+    ArrayList<String> first_name,last_name, phone_number;
     TaskAdapter taskAdapter;
-    AddTask addTask;
     TextView addTextView;
-    LottieAnimationView lottieAnimationView;
-
+    DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,17 +37,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addTaskFloatBar.setOnClickListener(this);
 
         addTextView = findViewById(R.id.add_text_label);
-        lottieAnimationView = findViewById(R.id.animationView);
 
-        taskModelArrayList = new ArrayList<>();
-        taskAdapter = new TaskAdapter(MainActivity.this, taskModelArrayList);
+        databaseHelper = new DatabaseHelper(MainActivity.this);
+        first_name = new ArrayList<>();
+        last_name = new ArrayList<>();
+        phone_number = new ArrayList<>();
+
+
+        taskAdapter = new TaskAdapter(MainActivity.this, first_name, last_name, phone_number);
+
 
         RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         recyclerView.setAdapter(taskAdapter);
-        addTextView.setVisibility(View.GONE);
-        lottieAnimationView.setVisibility(View.GONE);
-        taskAdapter.notifyDataSetChanged();
+
+    }
+
+    public void displayTask(){
+        Cursor cursor = databaseHelper.getAllData();
+        //check if counter the database is not long
+        if (cursor.getCount() == 0){
+            Toast.makeText(this,"No Data.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            while (cursor.moveToNext()){
+                first_name.add(cursor.getString(0));
+                last_name.add(cursor.getString(1));
+                phone_number.add(cursor.getString(2));
+            }
+        }
     }
 
     @Override
@@ -52,4 +77,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, AddTask.class));
         }
     }
+
 }

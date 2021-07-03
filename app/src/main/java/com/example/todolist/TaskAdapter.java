@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -16,40 +17,41 @@ import java.util.ArrayList;
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
     Context context;
-    ArrayList<TaskModel> taskModelArrayList;
+    ArrayList first_name, last_name, phone_number;
 
-    public TaskAdapter(Context context, ArrayList<TaskModel> taskModelArrayList) {
+    public TaskAdapter(Context context, ArrayList first_name, ArrayList last_name, ArrayList phone_number) {
         this.context = context;
-        this.taskModelArrayList = taskModelArrayList;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.phone_number = phone_number;
     }
 
     @NonNull
     @Override
     public TaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.rows_layout, null, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.rows_layout, parent, false);
         return new TaskHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
-        TaskModel taskModel = taskModelArrayList.get(position);
 
-        holder.firstname.setText(taskModel.getFirstname().toUpperCase());
-        holder.lastname.setText(taskModel.getLastname().toUpperCase());
-        holder.phone.setText(taskModel.getPhone());
+        holder.firstname.setText(first_name.get(position).toString().toUpperCase());
+        holder.lastname.setText(last_name.get(position).toString().toUpperCase());
+        holder.phone.setText(phone_number.get(position).toString().trim());
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return first_name.size();
     }
 
     public static class TaskHolder extends RecyclerView.ViewHolder {
 
-        EditText firstname;
-        EditText lastname;
-        EditText phone;
+        TextView firstname;
+        TextView lastname;
+        TextView phone;
         CardView cardParentView;
         ImageView edit;
         ImageView delete;
