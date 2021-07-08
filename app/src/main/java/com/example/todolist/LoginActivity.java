@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //please my ubuntu pc is having audio issues, i hope you understand, thank you......
     ProgressBar progressBar;
     private EditText userEmail, userPassword;
     private TextView userRegister, forgetPassword;
@@ -48,6 +49,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         int itemID = v.getId();
 
         if (itemID == R.id.loginBTN) {
+            //when item id equals to login button
+            //render this function...
             loginUser();
         } else if (itemID == R.id.register_textBTN) {
             startActivity(new Intent(this, RegisterActivity.class));
@@ -86,6 +89,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 //        Turn progress bar to visible when onclick Login btn..Progress to true when Login button is clicked
         progressBar.setVisibility(View.VISIBLE);
+        //Here user will in with his credentials, hat is email and password stored in firebase
         auth.signInWithEmailAndPassword(emailAddress, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 //Redirect user to Home activity if Login success

@@ -5,11 +5,17 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
+    private static final String TAG = "sqliteDataBase";
+
+    // I used sqlite for storing data
 
     private static final String DATABASE_NAME = "ToDOList.db";
     private static final int DATABASE_VERSION = 1;
@@ -47,14 +53,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addTaskSchedule(String firstname, String lastname, String phone) {
+    public void addTaskSchedule(TaskModel taskModel) {
         SQLiteDatabase db = this.getWritableDatabase();
         //we store all data into this content value
         ContentValues cv = new ContentValues();
 
-        cv.put(FIRSTNAME, firstname);
-        cv.put(FIRSTNAME, lastname);
-        cv.put(FIRSTNAME, phone);
+        cv.put(FIRSTNAME, taskModel.getFirstname());
+        cv.put(LASTNAME, taskModel.getLastname());
+        cv.put(PHONE, taskModel.getPhone());
 
         //this will be used in addTask function
         //we store data in results.
@@ -62,23 +68,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // validation checker
         if (result == -1) {
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "addTaskSchedule: Failed");
         } else {
-            Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "addTaskSchedule: Success");
         }
+        // Closing database after using
+        db.close();
     }
 
-    Cursor getAllData() {
+
+    public ArrayList<TaskModel> getAllData() {
+
+        // Data model list in which we have to return the data
+        ArrayList<TaskModel> taskModelArrayList = new ArrayList<>();
+
         String query = "SELECT * FROM " + TABLE_NAME;
+        // Accessing database for reading data
         SQLiteDatabase db = this.getReadableDatabase();
 
-//        check if database is not null
-        Cursor cursor = null;
-        if (db != null) {
-            cursor = db.rawQuery(query, null);
+        // Cursor for traversing whole data into database
+        try (Cursor cursor = db.rawQuery(query, null)) {
+            // check if cursor move to first
+            if (cursor.moveToFirst()) {
+
+                // looping through all data and adding to arraylist
+                do {
+                    TaskModel taskModel = new TaskModel(cursor.getString(1),
+                            cursor.getString(2), cursor.getString(3));
+                    taskModelArrayList.add(taskModel);
+
+                } while (cursor.moveToNext());
+
+            }
         }
-        //cursor will contain all data from table
-        return cursor;
+
+        // After using cursor we have to close it
+
+        // Closing database
+        db.close();
+
+        // returning list
+        return taskModelArrayList;
     }
 
 

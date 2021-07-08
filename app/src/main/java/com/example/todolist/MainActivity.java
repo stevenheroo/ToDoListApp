@@ -19,14 +19,17 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+
     private static final String TAG = "mainPage";
-    ArrayList<String> first_name, last_name, phone_number;
+    ArrayList<TaskModel> taskModelArrayList;
     TaskAdapter taskAdapter;
-    TextView addTextView;
+    TextView addTextLabel;
     DatabaseHelper databaseHelper;
+    RecyclerView recyclerView;
     ImageView drop_downBTN;
 
     @Override
@@ -37,38 +40,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FloatingActionButton addTaskFloatBar = findViewById(R.id.floating_BTN);
         addTaskFloatBar.setOnClickListener(this);
 
-        addTextView = findViewById(R.id.add_text_label);
+        addTextLabel= findViewById(R.id.add_text_label);
         drop_downBTN = findViewById(R.id.dropdown_BTN);
         drop_downBTN.setOnClickListener(this);
 
         databaseHelper = new DatabaseHelper(MainActivity.this);
-        first_name = new ArrayList<>();
-        last_name = new ArrayList<>();
-        phone_number = new ArrayList<>();
-
-
-        taskAdapter = new TaskAdapter(MainActivity.this, first_name, last_name, phone_number);
-
-
-        RecyclerView recyclerView = findViewById(R.id.recycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        recyclerView.setAdapter(taskAdapter);
+        taskModelArrayList = new ArrayList<>();
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        displayTask();
+    }
+
     public void displayTask() {
-        Cursor cursor = databaseHelper.getAllData();
-        //check if counter the database is not long
-        if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No Data.", Toast.LENGTH_SHORT).show();
-        } else {
-            while (cursor.moveToNext()) {
-                first_name.add(cursor.getString(0));
-                last_name.add(cursor.getString(1));
-                phone_number.add(cursor.getString(2));
-            }
-        }
+        taskModelArrayList = databaseHelper.getAllData();
+
+        taskAdapter = new TaskAdapter(MainActivity.this, taskModelArrayList);
+        recyclerView = findViewById(R.id.recycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView.setAdapter(taskAdapter);
+        addTextLabel.setVisibility(View.GONE);
     }
 
     @Override

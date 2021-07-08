@@ -10,15 +10,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="12dp">
+        android:layout_height="wrap_content"
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/firstname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="firstname"
-            android:textSize="@dimen/headerTextSize" />
+            android:textSize="@dimen/textFormat" />
 
         <TextView
             android:id="@+id/lastname"
@@ -27,7 +27,7 @@
             android:layout_marginStart="10dp"
             android:layout_toEndOf="@id/firstname"
             android:text="lastname"
-            android:textSize="@dimen/headerTextSize" />
+            android:textSize="@dimen/textFormat" />
 
         <TextView
             android:id="@+id/phone"
@@ -35,30 +35,31 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/lastname"
             android:text="phone"
-            android:textSize="@dimen/textFormat" />
+            android:textSize="@dimen/normalSize" />
 
         <ImageView
             android:id="@+id/edit_img_BTN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="12dp"
+            android:layout_below="@id/phone"
+            android:layout_toStartOf="@id/delete_img_BTN"
+            android:layout_marginEnd="22dp"
             android:src="@drawable/ic_edit" />
 
         <ImageView
             android:id="@+id/delete_img_BTN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edit_img_BTN"
+            android:layout_below="@id/phone"
+            android:layout_marginEnd="22dp"
             android:layout_alignParentEnd="true"
-            android:layout_margin="12dp"
             android:src="@drawable/ic_delete" />
 
         <TextView
             android:id="@+id/id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/delete_img_BTN"
+            android:layout_below="@id/phone"
             android:layout_centerHorizontal="true"
             android:text="1" />
 

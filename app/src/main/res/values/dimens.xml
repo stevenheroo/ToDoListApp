@@ -2,4 +2,5 @@
 <resources>
     <dimen name="headerTextSize">25sp</dimen>
     <dimen name="textFormat">16sp</dimen>
+    <dimen name="normalSize">12sp</dimen>
 </resources>

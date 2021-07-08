@@ -16,13 +16,11 @@ import java.util.ArrayList;
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
     Context context;
-    ArrayList first_name, last_name, phone_number;
+    ArrayList<TaskModel> taskModelArrayList;
 
-    public TaskAdapter(Context context, ArrayList first_name, ArrayList last_name, ArrayList phone_number) {
+    public TaskAdapter(Context context, ArrayList<TaskModel> taskList) {
         this.context = context;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.phone_number = phone_number;
+        this.taskModelArrayList = taskList;
     }
 
     @NonNull
@@ -35,15 +33,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
     @Override
     public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
 
-        holder.firstname.setText(first_name.get(position).toString().toUpperCase());
-        holder.lastname.setText(last_name.get(position).toString().toUpperCase());
-        holder.phone.setText(phone_number.get(position).toString().trim());
-
+        final TaskModel taskModel = taskModelArrayList.get(position);
+        holder.firstname.setText(taskModel.getFirstname().toUpperCase().trim());
+        holder.lastname.setText(taskModel.getLastname().toUpperCase().trim());
+        holder.phone.setText(taskModel.getPhone());
     }
 
     @Override
     public int getItemCount() {
-        return first_name.size();
+        return taskModelArrayList.size();
     }
 
     public static class TaskHolder extends RecyclerView.ViewHolder {
@@ -51,6 +49,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         TextView firstname;
         TextView lastname;
         TextView phone;
+        TextView id;
         CardView cardParentView;
         ImageView edit;
         ImageView delete;
@@ -60,6 +59,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             firstname = itemView.findViewById(R.id.firstname);
             lastname = itemView.findViewById(R.id.lastname);
             phone = itemView.findViewById(R.id.phone);
+            id = itemView.findViewById(R.id.id);
             cardParentView = itemView.findViewById(R.id.card_parentView);
             edit = itemView.findViewById(R.id.edit_img_BTN);
             delete = itemView.findViewById(R.id.delete_img_BTN);
