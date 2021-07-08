@@ -37,6 +37,17 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         holder.firstname.setText(taskModel.getFirstname().toUpperCase().trim());
         holder.lastname.setText(taskModel.getLastname().toUpperCase().trim());
         holder.phone.setText(taskModel.getPhone());
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        deleteTask();
+                    }
+                }
+        );
+    }
+
+    private void deleteTask() {
+
     }
 
     @Override

@@ -4,13 +4,14 @@
     android:id="@+id/card_parentView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_margin="6dp"
     android:backgroundTint="@color/teal_200"
     app:cardCornerRadius="20dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="4dp"
         android:padding="5dp">
 
         <TextView
@@ -51,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/phone"
-            android:layout_marginEnd="22dp"
+            android:layout_marginEnd="10dp"
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_delete" />
 

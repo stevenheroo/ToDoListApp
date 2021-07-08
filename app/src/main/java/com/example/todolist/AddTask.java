@@ -67,19 +67,20 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
             lastname.setText("");
             phone.setText("");
         }
-        if ((!firstName.isEmpty())){
-            firstname.setError("at least add firstname");
+        if ((firstName.isEmpty()) || (lastName.isEmpty()) || (phoneNumber.isEmpty())){
+            firstname.setError("All fields are required");
             firstname.requestFocus();
         }
+        else {
 
-        // Insert data into database
-        sqDatabase.addTaskSchedule(new TaskModel(firstName, lastName,
-                phoneNumber));
+            // Insert data into database
+            sqDatabase.addTaskSchedule(new TaskModel(firstName, lastName,
+                    phoneNumber));
 
-        // Toast for successfully saved data
-        Toast.makeText(AddTask.this, "Data saved successfully.",
-                Toast.LENGTH_SHORT).show();
-
+            // Toast for successfully saved data
+            Toast.makeText(AddTask.this, "Data saved successfully.",
+                    Toast.LENGTH_SHORT).show();
+        }
 
 
     }

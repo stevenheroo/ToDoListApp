@@ -26,12 +26,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String FIRSTNAME = "firstname";
     private static final String LASTNAME = "lastname";
     private static final String PHONE = "phone";
-    private final Context context;
 
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.context = context;
     }
 
     @Override
