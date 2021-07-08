@@ -75,6 +75,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    /**
+     * @return arrayList containing saved data
+     */
     public ArrayList<TaskModel> getAllData() {
 
         // Data model list in which we have to return the data
@@ -91,8 +94,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 // looping through all data and adding to arraylist
                 do {
-                    TaskModel taskModel = new TaskModel(cursor.getString(1),
-                            cursor.getString(2), cursor.getString(3));
+                    TaskModel taskModel = new TaskModel(
+                            cursor.getString(0),
+                            cursor.getString(1),
+                            cursor.getString(2),
+                            cursor.getString(3));
                     taskModelArrayList.add(taskModel);
 
                 } while (cursor.moveToNext());

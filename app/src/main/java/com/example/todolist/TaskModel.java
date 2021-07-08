@@ -1,12 +1,13 @@
 package com.example.todolist;
 
 public class TaskModel {
-    String firstname, lastname, phone;
+    String firstname, lastname, phone, id;
 
     public TaskModel() {
     }
 
-    public TaskModel(String firstname, String lastname, String phone) {
+    public TaskModel(String id, String firstname, String lastname, String phone) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.phone = phone;
@@ -34,6 +35,14 @@ public class TaskModel {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
 

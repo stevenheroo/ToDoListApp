@@ -17,12 +17,9 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
     EditText firstname;
     EditText lastname;
     EditText phone;
-    TextView id;
     ImageView backImgBTN;
 
     DatabaseHelper sqDatabase;
-
-    private FloatingActionButton addTask_FloatBTN;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,9 +31,8 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
         firstname = findViewById(R.id.task_firstname_id);
         lastname = findViewById(R.id.task_lastname_id);
         phone = findViewById(R.id.task_phone_id);
-        id = findViewById(R.id.id);
 
-        addTask_FloatBTN = findViewById(R.id.addTask_FloatBTN);
+        FloatingActionButton addTask_FloatBTN = findViewById(R.id.addTask_FloatBTN);
         addTask_FloatBTN.setOnClickListener(this);
 
         backImgBTN = findViewById(R.id.closeBTN);
@@ -61,20 +57,20 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
         String firstName = firstname.getText().toString().trim();
         String lastName = lastname.getText().toString().trim();
         String phoneNumber = phone.getText().toString().trim();
+        String id = "";
 
         if ((!firstName.isEmpty()) || (!lastName.isEmpty()) || (!phoneNumber.isEmpty())) {
             firstname.setText("");
             lastname.setText("");
             phone.setText("");
         }
-        if ((firstName.isEmpty()) || (lastName.isEmpty()) || (phoneNumber.isEmpty())){
+        if ((firstName.isEmpty()) || (lastName.isEmpty()) || (phoneNumber.isEmpty())) {
             firstname.setError("All fields are required");
             firstname.requestFocus();
-        }
-        else {
+        } else {
 
             // Insert data into database
-            sqDatabase.addTaskSchedule(new TaskModel(firstName, lastName,
+            sqDatabase.addTaskSchedule(new TaskModel(id, firstName, lastName,
                     phoneNumber));
 
             // Toast for successfully saved data

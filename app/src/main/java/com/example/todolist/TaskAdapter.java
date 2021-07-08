@@ -32,11 +32,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
-
         final TaskModel taskModel = taskModelArrayList.get(position);
         holder.firstname.setText(taskModel.getFirstname().toUpperCase().trim());
         holder.lastname.setText(taskModel.getLastname().toUpperCase().trim());
         holder.phone.setText(taskModel.getPhone());
+        holder.id.setText(taskModel.getId());
         holder.delete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
