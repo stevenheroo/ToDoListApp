@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -113,6 +112,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // returning list
         return taskModelArrayList;
+    }
+
+    // Deleting table from database
+    public void deleteTable(String ID) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Deleting table
+        db.delete(TABLE_NAME, "ID=" + ID, null);
+
+        // Closing database
+        db.close();
+
     }
 
 

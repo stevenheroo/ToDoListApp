@@ -106,4 +106,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.i("Logging User Out", "Successfully Signed out");
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+
+    }
 }
