@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 
@@ -42,7 +46,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         holder.firstname.setText(taskModel.getFirstname().toUpperCase().trim());
         holder.lastname.setText(taskModel.getLastname().toUpperCase().trim());
         holder.phone.setText(taskModel.getPhone());
-        holder.id.setText(taskModel.getId());
 
         //Delete task from list
         holder.delete.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +74,53 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
                     }
                 }
         );
+
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(v.getContext());
+                bottomSheetDialog.setContentView(R.layout.edit_bottom_sheet_bar);
+
+                EditText edit_firstname, edit_lastname, edit_phone;
+                Button editBTN;
+
+                edit_firstname = bottomSheetDialog.findViewById(R.id.edit_firstname);
+                edit_lastname = bottomSheetDialog.findViewById(R.id.edit_lastname);
+                edit_phone = bottomSheetDialog.findViewById(R.id.edit_phone);
+                editBTN = bottomSheetDialog.findViewById(R.id.updateBTN);
+
+                //populate info in text field
+                edit_firstname.setText(taskModel.getFirstname().trim());
+                edit_lastname.setText(taskModel.getLastname().trim());
+                edit_phone.setText(taskModel.getPhone().trim());
+
+                //update button
+                editBTN.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //objects to store text in text fields
+                        String firstName = edit_firstname.getText().toString().trim();
+                        String lastName = edit_lastname.getText().toString().trim();
+                        String phoneNumber = edit_phone.getText().toString().trim();
+                        String id = "";
+
+                        //set string objects equivalent position
+                        taskModel.setFirstname(firstName);
+                        taskModel.setLastname(lastName);
+                        taskModel.setPhone(phoneNumber);
+                        //update info in database
+                        databaseHelper.updateTable(taskModel.getId(), new TaskModel(
+                                id, firstName, lastName, phoneNumber
+                        ));
+                        notifyDataSetChanged();
+                        Toast.makeText(context, "Change Successful", Toast.LENGTH_SHORT).show();
+                        bottomSheetDialog.dismiss();
+                    }
+                });
+
+                bottomSheetDialog.show();
+            }
+        });
     }
 
     @Override
@@ -83,7 +133,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         TextView firstname;
         TextView lastname;
         TextView phone;
-        TextView id;
         CardView cardParentView;
         ImageView edit;
         ImageView delete;
@@ -93,7 +142,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             firstname = itemView.findViewById(R.id.firstname);
             lastname = itemView.findViewById(R.id.lastname);
             phone = itemView.findViewById(R.id.phone);
-            id = itemView.findViewById(R.id.id);
             cardParentView = itemView.findViewById(R.id.card_parentView);
             edit = itemView.findViewById(R.id.edit_img_BTN);
             delete = itemView.findViewById(R.id.delete_img_BTN);

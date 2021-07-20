@@ -127,5 +127,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public void updateTable(String ID, TaskModel taskModel){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(FIRSTNAME, taskModel.getFirstname());
+        cv.put(LASTNAME, taskModel.getLastname());
+        cv.put(PHONE, taskModel.getPhone());
+
+        long result = db.update(TABLE_NAME, cv, "id=?", new String[]{ID});
+
+        // validation checker
+        if (result == -1) {
+            Log.i(TAG, "updateTable: Failed");
+        } else {
+            Log.i(TAG, "updateTable: Success");
+        }
+        // Closing database after using
+        db.close();
+
+    }
+
 
 }

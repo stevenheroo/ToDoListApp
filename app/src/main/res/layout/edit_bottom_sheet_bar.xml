@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/bottom_text_view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UPDATE...."
+        android:textAlignment="center"
+        android:textSize="@dimen/textFormat"
+        android:background="@color/miniTitle"
+        android:textColor="@color/teal_200"
+        android:textStyle="bold"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/edit_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bottom_text_view1"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Firstname"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/edit_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text1"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Lastname"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/edit_text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text2"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Phone number"
+        android:textColor="@color/black" />
+
+
+    <EditText
+        android:id="@+id/edit_firstname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bottom_text_view1"
+        android:layout_margin="10dp"
+        android:layout_toEndOf="@id/edit_text1"
+        android:gravity="center"
+        android:hint="firstname"
+        android:imeOptions="actionNext"
+        android:padding="15dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/edit_lastname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_firstname"
+        android:layout_toEndOf="@id/edit_text2"
+        android:gravity="center"
+        android:hint="lastname"
+        android:imeOptions="actionNext"
+        android:padding="15dp"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/edit_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_lastname"
+        android:layout_margin="10dp"
+        android:layout_toEndOf="@id/edit_text3"
+        android:gravity="center"
+        android:hint="phone number"
+        android:imeOptions="actionNext"
+        android:padding="15dp"
+        android:singleLine="true" />
+
+
+    <Button
+        android:id="@+id/updateBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_phone"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="Update"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+</RelativeLayout>
